@@ -1,0 +1,5 @@
+Este arquivo mantém o diretório rabbitmq-log no Git.
+
+Em execução, o RabbitMQ grava os logs em rabbit@rabbitmq.log neste diretório.
+Os arquivos gerados são ignorados pelo Git para evitar que o repositório cresça
+com logs de runtime.

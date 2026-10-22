@@ -1,0 +1,5 @@
+Este arquivo mantém o diretório rabbitmq-lib no Git.
+
+O container grava aqui o banco persistente do RabbitMQ (Mnesia), incluindo
+usuários, filas, mensagens persistentes e definições. Não edite nem remova os
+arquivos gerados pelo RabbitMQ enquanto o serviço estiver em execução.
