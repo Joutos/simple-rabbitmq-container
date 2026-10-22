@@ -58,7 +58,7 @@ banco do RabbitMQ ainda não foi inicializado; depois disso, altere usuários co
 | Parâmetro | Valor | Efeito |
 | --- | --- | --- |
 | `heartbeat` | 60 segundos | Detecta conexões inativas, conforme negociação com o cliente. |
-| `channel_max` | 2048 | Limita canais por conexão. |
+| `max_channels_per_connection` | 2048 | Limita canais por conexão. |
 | `vm_memory_high_watermark.relative` | 0.6 | Aciona o alarme de memória ao atingir 60% da memória detectada. |
 | `disk_free_limit.absolute` | 1 GB | Aciona o alarme quando o espaço livre cai abaixo deste limite. |
 | `consumer_timeout` | 300000 ms | Fecha o canal se uma entrega ficar sem confirmação por cerca de 5 minutos. |
@@ -141,6 +141,8 @@ docker compose logs --tail=100 rabbitmq
 - **Erro de permissão nos volumes:** o usuário do RabbitMQ dentro do container
   precisa escrever em `rabbitmq-lib` e `rabbitmq-log`. Ajuste proprietário e
   permissões conforme o UID/GID da imagem; evite permissões globais de escrita.
+  O arquivo `rabbitmq-lib/.erlang.cookie` é sensível e deve ser legível apenas
+  pelo proprietário (`chmod 600 rabbitmq-lib/.erlang.cookie`).
 - **Porta ocupada:** altere somente a porta do host no Compose, por exemplo
   `5673:5672`, e use a nova porta no cliente.
 - **Falha ao iniciar após editar o conf:** consulte `docker compose logs
