@@ -48,6 +48,10 @@ banco do RabbitMQ ainda não foi inicializado; depois disso, altere usuários co
 - `rabbitmq.conf` é montado como somente leitura em `/etc/rabbitmq` e contém
   portas, heartbeat, limites de memória e disco, timeout de consumidores e
   destino dos logs.
+- `rabbitmq-management.conf` é montado em `/etc/rabbitmq/conf.d` depois dos
+  padrões da imagem oficial e reativa o coletor de métricas do plugin de
+  gerenciamento. Sem ele, a interface inicia em modo somente gerenciamento e
+  não mostra métricas e conexões ativas.
 - `rabbitmq-lib` é o volume de dados do RabbitMQ (Mnesia, usuários, filas e
   definições). O conteúdo gerado pelo container é ignorado pelo Git.
 - `rabbitmq-log` recebe o arquivo `rabbit@rabbitmq.log`. O arquivo

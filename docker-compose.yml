@@ -22,6 +22,9 @@ services:
       - ./rabbitmq-lib:/var/lib/rabbitmq/
       - ./rabbitmq-log:/var/log/rabbitmq
       - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      # A imagem oficial desativa o coletor de métricas por padrão. Sem esta
+      # sobreposição, o painel não exibe as métricas e as conexões ativas.
+      - ./rabbitmq-management.conf:/etc/rabbitmq/conf.d/99-management.conf:ro
 
 configs:
   rabbitmq-plugins:
